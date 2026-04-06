@@ -13,7 +13,7 @@ const HeroSection = () => {
 
     useEffect(() => {
         const current = titles[titleIndex];
-        let timeout; // TypeScript er ReturnType shoreye deya hoyeche
+        let timeout;
 
         if (!deleting && displayed.length < current.length) {
             timeout = setTimeout(() => setDisplayed(current.slice(0, displayed.length + 1)), 80);
@@ -71,6 +71,7 @@ const HeroSection = () => {
 
                         <motion.a
                             href="/resume.pdf" // Public folder e resume.pdf thakle kaj korbe
+                            download="Shahriar_Ayub_Resume.pdf"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             className="inline-flex items-center gap-2 px-6 py-3 border border-white/10 text-foreground font-medium rounded-lg hover:bg-white/5 transition-all duration-300 backdrop-blur-sm"

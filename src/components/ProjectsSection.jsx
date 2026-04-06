@@ -2,35 +2,26 @@ import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
 
-// Image path gulo apnar assets folder er sathe mil thakte hobe
+// Image path gulo assets folder-er sathe mil thakte hobe
 import project1 from "../assets/project1.jpg";
 import project2 from "../assets/project2.jpg";
-import project3 from "../assets/project3.jpg";
 
 const projects = [
     {
         title: "B2B Asset & Employee Management Platform",
-        description: "A comprehensive B2B solution for business owners to manage company assets and employees. Features include role-based access control (Admin/Employee), real-time asset tracking, automated request systems, and secure authentication.",
+        description: "A comprehensive B2B solution for business owners to manage company assets and employees. Features include role-based access control (Admin/Employee), real-time asset tracking, and secure authentication.",
         image: project1,
         tags: ["React", "Node.js", "Express", "MongoDB", "JWT", "Tailwind"],
         github: "https://github.com/ayub660/Client-asset-verse",
-        live: "https://asset-verse-clients.netlify.app ",
+        live: "https://asset-verse-clients.netlify.app",
     },
     {
         title: "Clean City - Urban Issue Reporting Portal",
-        description: "A community-driven platform for reporting city damages like broken roads or waste issues. Features include real-time public reports, user contribution tracking, and secure Firebase authentication for seamless community participation.",
+        description: "A community-driven platform for reporting city damages like broken roads or waste issues. Features include real-time public reports, user contribution tracking, and secure Firebase authentication.",
         image: project2,
         tags: ["React", "Firebase Auth", "Tailwind CSS", "Context API"],
         github: "https://github.com/ayub660/b12-a10-clients",
         live: "https://reporting-portal-city.netlify.app/",
-    },
-    {
-        title: "ToyTopia - Kids' Toy Wonderland",
-        description: "An interactive toy store showcasing a wide range of products loaded via dynamic JSON data. Features secure Firebase Authentication with Google Login, detailed product views, and a responsive UI designed for an engaging shopping experience.",
-        image: project3,
-        tags: ["React", "Firebase Auth", "JSON", "Tailwind CSS"],
-        github: "https://github.com/ayub660/Toy-Topia",
-        live: "https://toy-topia-f6ccd.web.app",
     },
 ];
 
@@ -54,58 +45,64 @@ const ProjectsSection = () => {
                     </h2>
                 </motion.div>
 
-                {/* Projects Grid */}
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {/* Projects Container - Flexbox auto-adjust */}
+                <div className="flex flex-wrap justify-center gap-8">
                     {projects.map((project, i) => (
                         <motion.div
                             key={project.title}
                             initial={{ opacity: 0, y: 40 }}
                             animate={isInView ? { opacity: 1, y: 0 } : {}}
                             transition={{ duration: 0.5, delay: i * 0.15 }}
-                            className="glass-card overflow-hidden group rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md"
+                            className="glass-card overflow-hidden group rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md flex-1 min-w-[300px] md:min-w-[400px] max-w-[550px] flex flex-col"
                         >
-                            {/* Image Container with Hover Overlay */}
+                            {/* Image Container */}
                             <div className="relative overflow-hidden aspect-video">
                                 <img
                                     src={project.image}
                                     alt={project.title}
-                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                                 />
-                                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-                                    <motion.a
+                                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300" />
+                            </div>
+
+                            {/* Project Info Section */}
+                            <div className="p-6 flex flex-col flex-grow">
+
+                                {/* --- Link Buttons (Title-er Opore, Boro Grid Layout) --- */}
+                                <div className="grid grid-cols-2 gap-4 mb-6">
+                                    {/* GitHub Button - Black Property */}
+                                    <a
                                         href={project.github}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        whileHover={{ scale: 1.1 }}
-                                        whileTap={{ scale: 0.9 }}
-                                        className="p-3 bg-white/10 backdrop-blur-md rounded-full text-white hover:bg-primary transition-colors"
+                                        className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-slate-200 hover:bg-white text-black text-sm font-bold transition-all border border-black/10 shadow-sm active:scale-95"
                                     >
-                                        <Github size={20} />
-                                    </motion.a>
-                                    <motion.a
+                                        <Github size={18} strokeWidth={2.5} />
+                                        <span>GitHub</span>
+                                    </a>
+
+                                    {/* Live Link Button */}
+                                    <a
                                         href={project.live}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        whileHover={{ scale: 1.1 }}
-                                        whileTap={{ scale: 0.9 }}
-                                        className="p-3 bg-white/10 backdrop-blur-md rounded-full text-white hover:bg-primary transition-colors"
+                                        className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-primary hover:bg-primary/90 text-white text-sm font-bold transition-all shadow-lg shadow-primary/20 active:scale-95"
                                     >
-                                        <ExternalLink size={20} />
-                                    </motion.a>
+                                        <ExternalLink size={18} strokeWidth={2.5} />
+                                        <span>Live Link</span>
+                                    </a>
                                 </div>
-                            </div>
 
-                            {/* Project Info */}
-                            <div className="p-6">
-                                <h3 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors">
+                                {/* Title & Description */}
+                                <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
                                     {project.title}
                                 </h3>
-                                <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
+                                <p className="text-muted-foreground text-sm mb-6 leading-relaxed flex-grow">
                                     {project.description}
                                 </p>
 
                                 {/* Tech Tags */}
-                                <div className="flex flex-wrap gap-2">
+                                <div className="flex flex-wrap gap-2 mt-auto">
                                     {project.tags.map((tag) => (
                                         <span
                                             key={tag}

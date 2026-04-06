@@ -5,8 +5,8 @@ const Footer = () => {
     // Social icons list (Icon name gulo dynamically render hobe)
     const socialLinks = [
         { Icon: Github, href: "https://github.com/ayub660" },
-        { Icon: Linkedin, href: "https://linkedin.com/in/apnar-username" },
-        { Icon: Twitter, href: "https://twitter.com/apnar-username" },
+        { Icon: Linkedin, href: "https://www.linkedin.com/in/shahriar-ayub" },
+        { Icon: Twitter, href: "https://x.com/ayub0070" },
     ];
 
     return (
@@ -15,7 +15,7 @@ const Footer = () => {
 
                 {/* Copyright Text */}
                 <span className="text-sm text-muted-foreground font-mono">
-                    © {new Date().getFullYear()} Your Name. Built with passion.
+                    © {new Date().getFullYear()} Shahriar Ayub. Built with passion.
                 </span>
 
                 {/* Social Icons Loop */}
